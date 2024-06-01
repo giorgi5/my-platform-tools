@@ -49,5 +49,6 @@ jobs:
        
       # add grafana
       - name: Deploy Grafana
-        run: helm upgrade --install grafana ./eks-monitor/helm-chart/grafana \
-               --values ./eks-monitor/helm-chart/grafana/values/grafana-values.yaml
+        run: |
+          helm upgrade --install grafana ./eks-monitor/helm-chart/grafana \
+            --values ./eks-monitor/helm-chart/grafana/values/grafana-values.yaml
