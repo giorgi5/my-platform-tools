@@ -1,0 +1,2 @@
+# Namespace where Prometheus resources will be deployed
+namespace : monitoring
