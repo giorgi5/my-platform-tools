@@ -200,8 +200,8 @@ spec:
         - name: {{ .Values.volumeName }}
           configMap:
           {{- range .Values.configMap }}
-            defaultMode: {{ .defaultMode }}
-            name: {{ .name }}
+              defaultMode: {{ .defaultMode }}
+              name: {{ .name }}
           {{- end }}
   
         - name: prometheus-storage-volume
