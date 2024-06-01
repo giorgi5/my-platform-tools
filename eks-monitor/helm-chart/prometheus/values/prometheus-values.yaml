@@ -27,3 +27,18 @@ subjects:
 - kind: ServiceAccount
   name: default
 
+#Configmap
+configmapname: prometheus-server-conf
+
+#Deployment
+deployName: prometheus-deployment
+replicaSet: 1
+deployApp: prometheus-server
+containerName: prometheus
+containerImage: prom/prometheus
+containerPort: 9090
+volumeMounts:
+  - name: prometheus-config-volume
+    mountPath: /etc/prometheus/
+  - name: prometheus-storage-volume
+    mountPath: /prometheus/

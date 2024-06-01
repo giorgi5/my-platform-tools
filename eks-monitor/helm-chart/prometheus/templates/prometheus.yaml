@@ -32,7 +32,7 @@ kind: ConfigMap
 metadata:
   name: prometheus-server-conf
   labels:
-    name: prometheus-server-conf
+    name: {{ .Values.configmapname }}
   namespace: {{ .Values.namespace }}
 data:
   prometheus.rules: |-
@@ -169,33 +169,33 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: prometheus-deployment
+  name: {{ .Values.deployName }}
   namespace: {{ .Values.namespace }}
   labels:
-    app: prometheus-server
+    app: {{ .Values.deployApp }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaSet }}
   selector:
     matchLabels:
-      app: prometheus-server
+      app: {{ .Values.deployApp }}
   template:
     metadata:
       labels:
-        app: prometheus-server
+        app: {{ .Values.deployApp }}
     spec:
       containers:
-        - name: prometheus
-          image: prom/prometheus
+        - name: {{ .Values.containerName }}
+          image: {{ .Values.containerImage }}
           args:
             - "--config.file=/etc/prometheus/prometheus.yml"
             - "--storage.tsdb.path=/prometheus/"
           ports:
-            - containerPort: 9090
+            - containerPort: {{ .Values.containerPort }}
           volumeMounts:
-            - name: prometheus-config-volume
-              mountPath: /etc/prometheus/
-            - name: prometheus-storage-volume
-              mountPath: /prometheus/
+            {{- range .Values.volumeMounts }}
+              - name: {{ .name }}
+                mountPath: {{ .mountPath }}
+            {{- end }}
       volumes:
         - name: prometheus-config-volume
           configMap:
