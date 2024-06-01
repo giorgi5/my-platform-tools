@@ -19,7 +19,7 @@ roleRef:
   kind: {{ .Values.roleRef.kind }}
   name: {{ .Values.roleRef.name }}
 subjects:
-- kind: {{ .Values.subjects.kind }}
+- kind: {{ .Values.subjects.kind | toJson }}
   name: {{ .Values.subjects.name }}
   namespace: {{ .Values.namespace }}
 
