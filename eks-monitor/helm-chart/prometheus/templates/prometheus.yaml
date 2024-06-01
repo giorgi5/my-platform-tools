@@ -19,8 +19,10 @@ roleRef:
   kind: {{ .Values.roleRef.kind }}
   name: {{ .Values.roleRef.name }}
 subjects:
-- kind: {{ .Values.subjects.kind | toJson }}
-  name: {{ .Values.subjects.name }}
+{{- range .Values.subjects }}
+- kind: {{ .kind | toJson }}
+  name: {{ .name }}
+{{- end }}
   namespace: {{ .Values.namespace }}
 
 #Config map
