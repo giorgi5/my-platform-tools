@@ -1,7 +1,7 @@
 # Namespace where Prometheus resources will be deployed
 namespace : monitoring
 #ClusterRole
-cluster-role-name: prometheus
+clusterrolename: prometheus
 rbacRules:
 - apiGroups: [""]
   resources:
