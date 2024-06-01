@@ -199,10 +199,8 @@ spec:
       volumes:
         - name: {{ .Values.volumeName }}
           configMap:
-            {{- range .Values.configMap }}
-                defaultMode: {{ .defaultMode }}
-                name: {{ .name }}
-            {{- end }}
+            defaultMode: 420
+            name: prometheus-server-conf
   
         - name: prometheus-storage-volume
           emptyDir: {}
