@@ -51,7 +51,7 @@ spec:
             memory: {{ .Values.requestsMemory }}
             cpu: {{ .Values.requestsCpu }}
         volumeMounts:
-        {{- range .Values.grafana.volumeMounts }}
+        {{- range .Values.volumeMounts }}
           - mountPath: {{ .mountPath }}
             name: {{ .name }}
             {{- if .readOnly }}
