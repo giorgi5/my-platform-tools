@@ -1,7 +1,15 @@
 namespace : monitoring
-image : grafana/grafana:latest
-containerPort : 3000
-nodePort : 32000
-type : LoadBalancer
-url : http://prometheus-service.monitoring.svc:8080
-host : grafana.gio.click
+configName: grafana-datasources
+
+#Deployment
+deployName: grafana
+replicaSet: 1
+app: grafana
+containerName: grafana
+containerImage: grafana/grafana:latest
+portName: grafana
+containerPort: 3000
+limitsMemory: "1Gi"
+limitsCpu: "1000m"
+requestsMemory: 500M
+requestsCpu: "500m"

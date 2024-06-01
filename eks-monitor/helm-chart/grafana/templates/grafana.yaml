@@ -45,11 +45,11 @@ spec:
           containerPort: {{ .Values.containerPort }}
         resources:
           limits:
-            memory: {{ .Values.limits.memory }}
-            cpu: {{ .Values.limits.cpu }}
+            memory: {{ .Values.limitsMemory }}
+            cpu: {{ .Values.limitsCpu }}
           requests: 
-            memory: {{ .Values.requests.memory }}
-            cpu: {{ .Values.requests.cpu }}
+            memory: {{ .Values.requestsMemory }}
+            cpu: {{ .Values.requestsCpu }}
         volumeMounts:
           - mountPath: /var/lib/grafana
             name: grafana-storage
