@@ -39,3 +39,15 @@ jobs:
       # Add deployment steps for each tool below
       - name: Deploy ingress-nginx controller
         run: kubectl apply -f ingress-controller/ingress.yaml
+
+      # add prometheus
+      - name: Deploy Prometheus
+        run: |
+          kubectl create namespace monitoring
+          helm upgrade --install prometheus ./eks-monitor/helm-chart/prometheus \
+          --values ./eks-monitor/helm-chart/prometheus/values/prometheus-values.yaml
+       
+      # add grafana
+      - name: Deploy Grafana
+        run: helm upgrade --install grafana ./eks-monitor/helm-chart/grafana \
+          --values ./eks-monitor/helm-chart/grafana/values/grafana-values.yaml
