@@ -13,3 +13,9 @@ limitsMemory: "1Gi"
 limitsCpu: "1000m"
 requestsMemory: 500M
 requestsCpu: "500m"
+volumeMounts:
+  - mountPath: /var/lib/grafana
+    name: grafana-storage
+  - mountPath: /etc/grafana/provisioning/datasources
+    name: grafana-datasources
+    readOnly: false

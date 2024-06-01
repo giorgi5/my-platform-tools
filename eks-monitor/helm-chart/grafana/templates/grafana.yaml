@@ -51,11 +51,13 @@ spec:
             memory: {{ .Values.requestsMemory }}
             cpu: {{ .Values.requestsCpu }}
         volumeMounts:
-          - mountPath: /var/lib/grafana
-            name: grafana-storage
-          - mountPath: /etc/grafana/provisioning/datasources
-            name: grafana-datasources
-            readOnly: false
+        {{- range .Values.grafana.volumeMounts }}
+          - mountPath: {{ .mountPath }}
+            name: {{ .name }}
+            {{- if .readOnly }}
+            readOnly: {{ .readOnly }}
+            {{- end }}
+        {{- end }}
       volumes:
         - name: grafana-storage
           emptyDir: {}
