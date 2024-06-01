@@ -26,3 +26,16 @@ volumes:
     configMap:
         defaultMode: 420
         name: grafana-datasources
+
+#Service
+svcName: grafana
+type: NodePort
+port: 3000
+targetPort: 3000
+nodePort: 32000
+
+#Ingress
+ingressName: grafana-ingress
+ingressClassName: nginx
+host: grafana.gio.click
+pathType: Prefix
