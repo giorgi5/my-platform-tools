@@ -45,7 +45,7 @@ jobs:
         run: |
           kubectl create namespace monitoring
           helm upgrade --install prometheus ./eks-monitor/helm-chart/prometheus \
-          --values ./eks-monitor/helm-chart/prometheus/values/prometheus-values.yaml
+            --values ./eks-monitor/helm-chart/prometheus/values/prometheus-values.yaml
        
       # add grafana
       - name: Deploy Grafana
