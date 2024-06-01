@@ -1,6 +1,7 @@
 # Namespace where Prometheus resources will be deployed
 namespace : monitoring
 #ClusterRole
+cluster-role-name: prometheus
 rbacRules:
 - apiGroups: [""]
   resources:
@@ -17,3 +18,12 @@ rbacRules:
   verbs: ["get", "list", "watch"]
 - nonResourceURLs: ["/metrics"]
   verbs: ["get"]
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: prometheus
+subjects:
+- kind: ServiceAccount
+  name: default
+
