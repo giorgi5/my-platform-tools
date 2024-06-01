@@ -19,3 +19,10 @@ volumeMounts:
   - mountPath: /etc/grafana/provisioning/datasources
     name: grafana-datasources
     readOnly: false
+volumes:
+  - name: grafana-storage
+    emptyDir: {}
+  - name: grafana-datasources
+    configMap:
+        defaultMode: 420
+        name: grafana-datasources

@@ -59,12 +59,16 @@ spec:
             {{- end }}
         {{- end }}
       volumes:
-        - name: grafana-storage
+      {{- range .Values.volumes }}
+        - name: {{ .name }}
+          {{- if .emptyDir }}
           emptyDir: {}
-        - name: grafana-datasources
+          {{- else if .configMap }}
           configMap:
-              defaultMode: 420
-              name: grafana-datasources
+            defaultMode: {{ .configMap.defaultMode }}
+            name: {{ .configMap.name }}
+          {{- end }}
+      {{- end }}
 ---
 #Service
 apiVersion: v1
