@@ -197,10 +197,12 @@ spec:
                 mountPath: {{ .mountPath }}
             {{- end }}
       volumes:
-        - name: prometheus-config-volume
+        - name: {{ .Values.volumeName }}
           configMap:
-            defaultMode: 420
-            name: prometheus-server-conf
+            {{- range .Values.configMap }}
+            defaultMode: {{ .defaultMode }}
+            name: {{ .name }}
+            {{- end }}
   
         - name: prometheus-storage-volume
           emptyDir: {}

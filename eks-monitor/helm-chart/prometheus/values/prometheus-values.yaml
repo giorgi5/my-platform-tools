@@ -42,3 +42,7 @@ volumeMounts:
     mountPath: /etc/prometheus/
   - name: prometheus-storage-volume
     mountPath: /prometheus/
+volumeName: prometheus-config-volume
+configMap:
+  defaultMode: 420
+  name: prometheus-server-conf
