@@ -4,9 +4,9 @@ metadata:
   name: prometheus
 rules:
 {{- range .Values.rbacRules }}
-  - apiGroups: {{ .apiGroups | default [""] | toJson }}
+  - apiGroups: {{ .apiGroups | toJson }}
     resources: {{ .resources | toJson }}
-    nonResourceURLs: {{ .nonResourceURLs | default [] | toJson }}
+    nonResourceURLs: {{ .nonResourceURLs | toJson }}
     verbs: {{ .verbs | toJson }}
 {{- end }}
 ---
