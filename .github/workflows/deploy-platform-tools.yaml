@@ -37,6 +37,9 @@ jobs:
         run: aws eks update-kubeconfig --name project-x-eks-dev --region $AWS_REGION
 
       # Add deployment steps for each tool below
+      - name: Deploy metrics-server 
+        run: kubectl apply -f metric-server/components.yaml
+
       - name: Deploy ingress-nginx controller
         run: kubectl apply -f ingress-controller/ingress.yaml
 
