@@ -93,6 +93,8 @@ kind: Ingress
 metadata:
   name: {{ .Values.ingressName }}
   namespace: {{ .Values.namespace}}
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: {{ .Values.ingressClassName }}
   rules:
