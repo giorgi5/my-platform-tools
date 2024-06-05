@@ -55,3 +55,9 @@ jobs:
         run: |
           helm upgrade --install grafana ./eks-monitor/helm-chart/grafana \
             --values ./eks-monitor/helm-chart/grafana/values/grafana-values.yaml
+
+      #Deploy ArgoCD
+      - name: Deploy ArgoCD
+        run: |
+          kubectl apply -f argocd/argocdcrd.yaml
+          kubectl apply -f argocd/argocd-ingress.yaml
