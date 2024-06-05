@@ -10,7 +10,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: argocd.gio.click
+  - host: argocd.giomio.click
     http:
       paths:
       - path: /

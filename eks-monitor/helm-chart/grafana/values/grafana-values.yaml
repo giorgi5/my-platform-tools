@@ -37,5 +37,5 @@ nodePort: 32000
 #Ingress
 ingressName: grafana-ingress
 ingressClassName: nginx
-host: grafana.gio.click
+host: grafana.giomio.click
 pathType: Prefix
