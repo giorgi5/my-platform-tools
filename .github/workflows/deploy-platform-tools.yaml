@@ -60,5 +60,5 @@ jobs:
       - name: Deploy ArgoCD
         run: |
           kubectl get namespace argocd || kubectl create namespace argocd
-          kubectl apply -f argocd/argocdcrd.yaml
+          kubectl apply -f argocd/argocdcrd.yaml -n argocd
           kubectl apply -f argocd/argocd-ingress.yaml
